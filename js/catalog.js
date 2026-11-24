@@ -54,7 +54,7 @@ function createProductCard(product) {
   const link = createCardElement('a', 'button button--primary product-card__button',
     product.href === 'product.html' ? 'Подробнее' : 'Заказать');
   link.href = product.href;
-  const demoButton = createCardElement('button', 'button button--secondary', 'В корзину (демо)');
+  const demoButton = createCardElement('button', 'button button--secondary', 'В корзину');
   demoButton.type = 'button';
   demoButton.dataset.action = 'add-to-cart';
   demoButton.dataset.productId = product.id;
@@ -100,6 +100,10 @@ productsContainer.addEventListener('click', (event) => {
   const button = event.target.closest('[data-action="add-to-cart"]');
   if (!button) return;
   const product = findProductById(products, Number(button.dataset.productId));
-  if (product) console.log('Выбран товар для корзины (демо):', product.title);
+  if (!product) return;
+  const saved = addToCart(product.id);
+  document.getElementById('cart-notice').textContent = saved
+    ? product.title + ' · В корзине: ' + countCartItems()
+    : 'Не удалось сохранить корзину. Проверьте настройки браузера.';
 });
 updateCatalog();
