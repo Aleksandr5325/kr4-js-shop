@@ -22,17 +22,17 @@
 
       <details class="mobile-menu" open>
         <summary class="mobile-menu__toggle">Меню</summary>
-      <nav class="site-nav" aria-label="Основная навигация">
-        <ul class="site-nav__list">
-          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заказ</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-        </ul>
-      </nav>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html" aria-current="page">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заказ</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          </ul>
+        </nav>
       </details>
     </div>
   </header>
@@ -40,13 +40,14 @@
   <main id="main" tabindex="-1">
     <section class="hero">
       <div class="hero__content">
-      <h1 class="hero__title">MellShop — магазин мягких игрушек</h1>
-      <p>
-        Плюшевые герои игр, мемов и мультфильмов, а ещё классические мягкие зверята.
-        Каждую игрушку приятно обнимать — и не стыдно подарить.
-      </p>
-      <a class="button button--primary" href="#popular">Смотреть популярные</a>
-          </div>
+        <h1 class="hero__title">MellShop — магазин мягких игрушек</h1>
+        <p>
+          Плюшевые герои игр, мемов и мультфильмов, а ещё классические мягкие зверята.
+          Каждую игрушку приятно обнимать — и не стыдно подарить.
+        </p>
+        <a class="button button--primary" href="#popular">Популярные игрушки</a>
+        <a class="hero__catalog-link" href="catalog.html">Весь каталог</a>
+      </div>
       <picture>
         <source media="(min-width: 1200px)" srcset="images/hero-1155.jpg">
         <source media="(min-width: 768px)" srcset="images/hero-800.jpg">
@@ -165,19 +166,15 @@
         в праздничную коробку с открыткой.
       </p>
     </aside>
-    <section class="section js-check" aria-labelledby="js-check-title">
-      <h2 id="js-check-title">Проверка JavaScript</h2>
-      <p class="js-message">JavaScript пока не выполнился.</p>
-      <pre class="product-output"></pre>
-    </section>
   </main>
 
   <footer class="site-footer" id="contacts">
-    <p>&copy; 2026 MellShop — учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="site-footer__inner">
+      <p>&copy; 2026 MellShop — учебный проект. Все права защищены.</p>
+      <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+      <a class="button button--secondary" href="#">↑ Наверх</a>
+    </div>
   </footer>
-
-  <a class="button button--primary to-top" href="#">↑ Наверх</a>
 
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
     <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>

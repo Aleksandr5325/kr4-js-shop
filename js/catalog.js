@@ -3,6 +3,7 @@ const categoryFilter = document.getElementById('category-filter');
 const sortSelect = document.getElementById('sort-select');
 const productsContainer = document.querySelector('[data-products-container]');
 const catalogCount = document.querySelector('.catalog-count');
+const cartCount = document.querySelector('[data-cart-count]');
 const catalogEmpty = document.querySelector('.catalog-empty');
 const catalogState = { query: '', category: 'all', sortType: 'default' };
 
@@ -13,7 +14,14 @@ function createCardElement(tag, className, text = '') {
   return element;
 }
 
-function createProductCard(product) {
+function updateCartButton(button, product, quantity) {
+  button.textContent = quantity ? 'В корзине: ' + quantity : 'В корзину';
+  button.setAttribute('aria-label', quantity
+    ? 'Добавить ещё: ' + product.title + '. В корзине: ' + quantity
+    : 'В корзину: ' + product.title);
+}
+
+function createProductCard(product, quantity) {
   const card = createCardElement('article', 'product-card');
   const price = calculateFinalPrice(product.price, product.discountPercent);
   if (product.discountPercent > 0) card.classList.add('product-card--discount');
@@ -51,18 +59,21 @@ function createProductCard(product) {
   if (product.discountPercent > 0) {
     priceElement.append(createCardElement('s', 'product-card__old-price', formatPrice(product.price)));
   }
-  const link = createCardElement('a', 'button button--primary product-card__button',
+  const link = createCardElement('a', 'button button--secondary product-card__button',
     product.href === 'product.html' ? 'Подробнее' : 'Заказать');
-  link.href = product.href;
-  const demoButton = createCardElement('button', 'button button--secondary', 'В корзину');
-  demoButton.type = 'button';
-  demoButton.dataset.action = 'add-to-cart';
-  demoButton.dataset.productId = product.id;
+  link.href = product.href === 'product.html' ? product.href : 'order.html?product=' + product.id;
+  const cartButton = createCardElement('button', 'button button--primary');
+  cartButton.type = 'button';
+  cartButton.dataset.action = 'add-to-cart';
+  cartButton.dataset.productId = product.id;
+  updateCartButton(cartButton, product, quantity);
+  const actions = createCardElement('div', 'catalog-card-actions');
+  actions.append(cartButton, link);
   card.append(picture,
     createCardElement('p', 'product-card__category', product.categoryLabel),
     createCardElement('h3', 'product-card__title', product.title),
     createCardElement('p', 'product-card__description', product.description),
-    priceElement, link, demoButton);
+    priceElement, actions);
   return card;
 }
 
@@ -78,7 +89,12 @@ function updateCatalog() {
     preparedProducts.sort((a, b) => direction * (priceOf(a) - priceOf(b)));
   }
 
-  productsContainer.replaceChildren(...preparedProducts.map(createProductCard));
+  const items = readCart();
+  const cards = preparedProducts.map((product) => {
+    const item = items.find((entry) => entry.id === product.id);
+    return createProductCard(product, item?.quantity);
+  });
+  productsContainer.replaceChildren(...cards);
   catalogCount.textContent = 'Найдено товаров: ' + preparedProducts.length;
   catalogEmpty.hidden = preparedProducts.length > 0;
 }
@@ -102,8 +118,14 @@ productsContainer.addEventListener('click', (event) => {
   const product = findProductById(products, Number(button.dataset.productId));
   if (!product) return;
   const saved = addToCart(product.id);
+  if (saved) {
+    cartCount.textContent = countCartItems();
+    const item = readCart().find((item) => item.id === product.id);
+    updateCartButton(button, product, item?.quantity);
+  }
   document.getElementById('cart-notice').textContent = saved
     ? product.title + ' · В корзине: ' + countCartItems()
     : 'Не удалось сохранить корзину. Проверьте настройки браузера.';
 });
+cartCount.textContent = countCartItems();
 updateCatalog();

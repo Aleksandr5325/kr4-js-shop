@@ -271,18 +271,6 @@ a:focus-visible {
   cursor: not-allowed;
 }
 
-/*
-  Кнопка «Наверх» — блок to-top.
-  Внешний вид берётся из .button и .button--primary (БЭМ-микс),
-  здесь только положение: всегда в правом нижнем углу окна.
-*/
-.to-top {
-  position: fixed;
-  right: var(--space-lg);
-  bottom: var(--space-lg);
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
 
 /*
   Ссылка «Перейти к содержимому» для тех, кто управляет сайтом с клавиатуры.
@@ -813,23 +801,156 @@ main:target {
   border: 0;
 }
 
+/* Финальное оформление каталога, корзины и лаборатории. */
+.site-footer__inner {
+  max-width: var(--container-width);
+  margin-inline: auto;
+}
+
+.hero__catalog-link {
+  display: inline-block;
+  margin: var(--space-sm);
+  font-weight: 700;
+}
+
+.catalog-toolbar,
+.catalog-card-actions,
+.promo-fields,
+.cart-item__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.catalog-toolbar {
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.catalog-toolbar p,
+#promo-result {
+  margin: 0;
+}
+
+#cart-notice {
+  margin: 0;
+}
+
+#cart-notice:not(:empty) {
+  margin-bottom: var(--space-sm);
+}
+
+.catalog-card-actions {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+}
+
+.catalog-toolbar [data-cart-count] {
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 2px 8px;
+  margin-left: 4px;
+}
+
+.catalog-empty,
+.cart-empty,
+.cart-summary,
+.lab-panel {
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.cart-layout {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
 .cart-items {
+  display: grid;
+  gap: var(--space-md);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .cart-items li {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: var(--space-md);
   align-items: center;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.cart-items img {
+  border-radius: var(--radius-sm);
+}
+
+.cart-item__info {
+  display: grid;
+  overflow-wrap: anywhere;
+}
+
+.cart-item__actions {
+  grid-column: 1 / -1;
+}
+
+.cart-summary h2,
+.cart-empty p {
+  margin-top: 0;
+}
+
+.cart-summary__details > div {
+  display: flex;
+  justify-content: space-between;
   gap: var(--space-sm);
-  padding-block: var(--space-sm);
+  padding-block: var(--space-xs);
 }
 
-#promo-form {
-  max-width: 28rem;
+.cart-summary__details dd {
+  margin: 0;
+  white-space: nowrap;
 }
 
-#promo-code {
+.cart-summary__total {
+  margin-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  font-weight: 800;
+}
+
+.promo-fields {
   margin-block: var(--space-sm);
+}
+
+.promo-fields input {
+  flex: 1 1 8rem;
+  width: auto;
+  min-width: 0;
+}
+
+#cart-checkout,
+#cart-back,
+.lab-panel {
+  margin-top: var(--space-md);
+}
+
+#cart-back {
+  display: inline-block;
+}
+
+.lab {
+  max-width: 760px;
+}
+
+@media (min-width: 900px) {
+  .cart-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(285px, 1fr);
+  }
 }
