@@ -1,3 +1,31 @@
+const orderParams = new URLSearchParams(location.search);
+const orderProduct = document.getElementById('order-product');
+const checkoutOrder = document.getElementById('checkout-order');
+const requestedProduct = products.find((product) => product.id === Number(orderParams.get('product')));
+if (requestedProduct) orderProduct.value = requestedProduct.image;
+
+const checkoutItems = orderParams.get('from') === 'cart' ? readCart() : [];
+if (checkoutItems.length) {
+  const list = document.createElement('ul');
+  checkoutItems.forEach((item) => {
+    const product = products.find((product) => product.id === item.id);
+    const row = document.createElement('li');
+    row.textContent = product.title + ' × ' + item.quantity;
+    list.append(row);
+  });
+  const subtotal = cartSubtotal(checkoutItems);
+  const discount = cartDiscount(subtotal, orderParams.get('promo') === 'MELL10');
+  const price = document.createElement('p');
+  price.textContent = 'Товары с учётом скидок: ' + cartMoney.format((subtotal - discount) / 100);
+  const editCart = document.createElement('a');
+  editCart.href = 'cart.html';
+  editCart.textContent = 'Изменить корзину';
+  checkoutOrder.append(list, price, editCart);
+  checkoutOrder.hidden = false;
+  document.getElementById('order-product-field').hidden = true;
+  orderProduct.disabled = true;
+}
+
 const applicationForm = document.querySelector('.order-form--page');
 const applicationResult = document.getElementById('order-result');
 const applicationFields = [

@@ -64,27 +64,24 @@ function getPreparedProducts(products, query, category, sortDirection) {
   return sortProductsByPrice(filtered, sortDirection);
 }
 
-console.log('Файл main.js подключён');
-console.table(products);
-console.log('Названия:', getProductTitles(products));
-console.table(getAvailableProducts(products));
-console.table(searchProducts(products, 'кот'));
-console.table(filterProductsByCategory(products, 'games'));
-console.table(sortProductsByPrice(products, 'asc'));
-console.log('Товар с id 4:', findProductById(products, 4));
-console.log('Сумма цен:', calculateTotalPrice(products));
-console.log('В наличии:', countAvailableProducts(products));
-console.log('Средняя цена:', calculateAveragePrice(products));
-console.table(getPreparedProducts(products, 'ш', 'games', 'asc'));
-
-const messageElement = document.querySelector('.js-message');
+// Учебная диагностика подключается только на странице лаборатории.
 const productOutputElement = document.querySelector('.product-output');
-
-if (messageElement) {
-  messageElement.textContent = 'Массив товаров и функции обработки данных подключены.';
-}
-
 if (productOutputElement) {
+  console.log('Файл main.js подключён');
+  console.table(products);
+  console.log('Названия:', getProductTitles(products));
+  console.table(getAvailableProducts(products));
+  console.table(searchProducts(products, 'кот'));
+  console.table(filterProductsByCategory(products, 'games'));
+  console.table(sortProductsByPrice(products, 'asc'));
+  console.log('Товар с id 4:', findProductById(products, 4));
+  console.log('Сумма цен:', calculateTotalPrice(products));
+  console.log('В наличии:', countAvailableProducts(products));
+  console.log('Средняя цена:', calculateAveragePrice(products));
+  console.table(getPreparedProducts(products, 'ш', 'games', 'asc'));
+
+  document.querySelector('.js-message').textContent = 'Массив товаров и функции обработки данных подключены.';
+  document.getElementById('lab-product-example').textContent = createProductSummary(findProductById(products, 4));
   productOutputElement.textContent = [
     `Всего товаров: ${products.length}`,
     `Товаров в наличии: ${countAvailableProducts(products)}`,

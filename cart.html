@@ -22,17 +22,17 @@
 
       <details class="mobile-menu" open>
         <summary class="mobile-menu__toggle">Меню</summary>
-      <nav class="site-nav" aria-label="Основная навигация">
-        <ul class="site-nav__list">
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заказ</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="cart.html" aria-current="page">Корзина</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-        </ul>
-      </nav>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заказ</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="cart.html" aria-current="page">Корзина</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          </ul>
+        </nav>
       </details>
     </div>
   </header>
@@ -40,28 +40,42 @@
   <main id="main" tabindex="-1">
     <section class="section">
       <h1>Корзина</h1>
-      <p id="cart-empty">В корзине пока ничего нет.</p>
-      <ul id="cart-items" class="cart-items"></ul>
-      <div id="cart-summary" hidden>
-        <form id="promo-form">
-          <label for="promo-code">Промокод</label>
-          <input id="promo-code" class="order-form__input" autocomplete="off">
-          <button class="button button--secondary">Применить</button>
-          <p id="promo-result" role="status"></p>
-        </form>
-        <p id="cart-total" role="status"></p>
-        <a class="button button--primary" href="order.html">Перейти к форме заявки</a>
-        <p>Корзина сохраняется в этом браузере. Форма заявки работает в учебном режиме.</p>
+      <div id="cart-empty" class="cart-empty">
+        <p>В корзине пока ничего нет.</p>
+        <a class="button button--primary" href="catalog.html">Выбрать игрушку</a>
       </div>
-      <a href="catalog.html">Вернуться в каталог</a>
+      <div class="cart-layout">
+        <div id="cart-selection" hidden>
+          <ul id="cart-items" class="cart-items"></ul>
+          <a id="cart-back" href="catalog.html">Продолжить покупки</a>
+        </div>
+        <aside id="cart-summary" class="cart-summary" aria-label="Стоимость заказа" hidden>
+          <h2>Ваш заказ</h2>
+          <dl class="cart-summary__details">
+            <div><dt>Товары</dt><dd id="cart-subtotal"></dd></div>
+            <div><dt>Скидка по промокоду</dt><dd id="cart-discount"></dd></div>
+            <div class="cart-summary__total"><dt>Итого</dt><dd id="cart-total" role="status"></dd></div>
+          </dl>
+          <form id="promo-form">
+            <label for="promo-code">Промокод</label>
+            <div class="promo-fields">
+              <input id="promo-code" class="order-form__input" autocomplete="off" placeholder="MELL10">
+              <button class="button button--secondary">Применить</button>
+            </div>
+            <p id="promo-result" role="status"></p>
+          </form>
+          <a id="cart-checkout" class="button button--primary" href="order.html?from=cart">Оформить заявку</a>
+        </aside>
+      </div>
     </section>
   </main>
   <footer class="site-footer">
-    <p>&copy; 2026 MellShop — учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="site-footer__inner">
+      <p>&copy; 2026 MellShop — учебный проект. Все права защищены.</p>
+      <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+      <a class="button button--secondary" href="#">↑ Наверх</a>
+    </div>
   </footer>
-
-  <a class="button button--primary to-top" href="#">↑ Наверх</a>
 
 </body>
 </html>

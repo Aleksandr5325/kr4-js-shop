@@ -52,6 +52,10 @@ main {
   padding-block: clamp(16px, 3vw, 32px);
 }
 
+.catalog-intro {
+  padding-block: var(--space-md);
+}
+
 .hero {
   display: grid;
   gap: 24px;
@@ -171,17 +175,6 @@ main {
   overflow: auto;
 }
 
-/* Нижний запас позволяет прокрутить последние поля выше fixed-кнопки. */
-.site-footer {
-  padding: 24px 16px 88px;
-}
-
-.to-top {
-  right: 16px;
-  bottom: 16px;
-  z-index: 90;
-}
-
 .skip-link {
   z-index: 110;
 }
@@ -227,10 +220,6 @@ main {
     flex-wrap: wrap;
   }
 
-  .to-top {
-    right: 32px;
-    bottom: 32px;
-  }
 }
 
 @media (min-width: 900px) {
@@ -265,8 +254,24 @@ main {
 }
 
 @media (min-width: 1280px) {
-  .products-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .site-header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .site-header .mobile-menu,
+  .site-nav__list {
+    margin-top: 0;
+  }
+
+  .catalog-filters {
+    top: 96px;
+  }
+
+  [id] {
+    scroll-margin-top: 96px;
   }
 
   .catalog-products .products-grid {

@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <script src="js/ui.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/cart.js" defer></script>
   <script src="js/validation.js" defer></script>
 </head>
 <body>
@@ -21,17 +23,17 @@
 
       <details class="mobile-menu" open>
         <summary class="mobile-menu__toggle">Меню</summary>
-      <nav class="site-nav" aria-label="Основная навигация">
-        <ul class="site-nav__list">
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="order.html" aria-current="page">Заказ</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-        </ul>
-      </nav>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+            <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="order.html" aria-current="page">Заказ</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          </ul>
+        </nav>
       </details>
     </div>
   </header>
@@ -45,8 +47,7 @@
     <section class="section">
       <h1>Оформление заказа</h1>
       <p>
-        Заполните форму — мы свяжемся с вами, чтобы подтвердить заказ
-        и согласовать доставку.
+        Заполните контактные данные и выберите способ доставки. Заявка работает в учебном режиме.
       </p>
 
       <form class="order-form order-form--page" action="#" method="post">
@@ -100,7 +101,8 @@
         <fieldset class="order-form__group">
           <legend class="order-form__legend">Товар</legend>
 
-          <div class="order-form__field">
+          <div id="checkout-order" hidden></div>
+          <div class="order-form__field" id="order-product-field">
             <label class="order-form__label" for="order-product">Игрушка</label>
             <select class="order-form__select" id="order-product" name="product" required>
               <option value="">Выберите игрушку</option>
@@ -111,6 +113,7 @@
               <option value="bunny">Зайчик — 990 руб.</option>
               <option value="raven">Ворона — 1890 руб.</option>
               <option value="elsa">Эльза — 1590 руб.</option>
+              <option value="fox">Лисёнок — 1290 руб.</option>
             </select>
           </div>
 
@@ -162,11 +165,12 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 MellShop — учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="site-footer__inner">
+      <p>&copy; 2026 MellShop — учебный проект. Все права защищены.</p>
+      <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+      <a class="button button--secondary" href="#">↑ Наверх</a>
+    </div>
   </footer>
-
-  <a class="button button--primary to-top" href="#">↑ Наверх</a>
 
 </body>
 </html>
