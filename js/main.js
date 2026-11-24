@@ -19,22 +19,78 @@ function createProductSummary(product) {
   return `${product.title}: ${formatPrice(total)}. Статус: ${getProductStatus(product)}.`;
 }
 
-const summary = createProductSummary(product);
+// Методы массива используют callback для обработки каждого товара.
+function getProductTitles(products) {
+  return products.map((product) => product.title);
+}
+
+function getAvailableProducts(products) {
+  return products.filter((product) => product.isAvailable);
+}
+
+function searchProducts(products, query) {
+  const normalizedQuery = query.trim().toLowerCase();
+  return products.filter((product) => product.title.toLowerCase().includes(normalizedQuery));
+}
+
+function filterProductsByCategory(products, category) {
+  return category === 'all' ? products : products.filter((product) => product.category === category);
+}
+
+function sortProductsByPrice(products, direction = 'asc') {
+  const multiplier = direction === 'desc' ? -1 : 1;
+  return [...products].sort((first, second) => multiplier * (first.price - second.price));
+}
+
+function findProductById(products, id) {
+  return products.find((product) => product.id === id);
+}
+
+function calculateTotalPrice(products) {
+  return products.reduce((sum, product) => sum + product.price, 0);
+}
+
+function countAvailableProducts(products) {
+  return getAvailableProducts(products).length;
+}
+
+function calculateAveragePrice(products) {
+  return products.length ? Math.round(calculateTotalPrice(products) / products.length) : 0;
+}
+
+function getPreparedProducts(products, query, category, sortDirection) {
+  const matching = searchProducts(products, query);
+  const filtered = filterProductsByCategory(matching, category);
+  return sortProductsByPrice(filtered, sortDirection);
+}
+
 console.log('Файл main.js подключён');
-console.log('Товар:', product);
-console.log('Цена:', formatPrice(product.price));
-console.log('Скидка:', calculateDiscount(product.price, product.discountPercent));
-console.log('Итоговая цена:', calculateFinalPrice(product.price, product.discountPercent));
-console.log('Статус:', getProductStatus(product));
-console.log(summary);
-console.log('Доступен со скидкой:', product.isAvailable && product.discountPercent > 0);
+console.table(products);
+console.log('Названия:', getProductTitles(products));
+console.table(getAvailableProducts(products));
+console.table(searchProducts(products, 'кот'));
+console.table(filterProductsByCategory(products, 'games'));
+console.table(sortProductsByPrice(products, 'asc'));
+console.log('Товар с id 4:', findProductById(products, 4));
+console.log('Сумма цен:', calculateTotalPrice(products));
+console.log('В наличии:', countAvailableProducts(products));
+console.log('Средняя цена:', calculateAveragePrice(products));
+console.table(getPreparedProducts(products, 'ш', 'games', 'asc'));
 
 const messageElement = document.querySelector('.js-message');
 const productOutputElement = document.querySelector('.product-output');
 
-if (messageElement && productOutputElement) {
-  messageElement.textContent = 'JavaScript подключён корректно.';
-  productOutputElement.textContent = summary;
+if (messageElement) {
+  messageElement.textContent = 'Массив товаров и функции обработки данных подключены.';
+}
+
+if (productOutputElement) {
+  productOutputElement.textContent = [
+    `Всего товаров: ${products.length}`,
+    `Товаров в наличии: ${countAvailableProducts(products)}`,
+    `Средняя цена до скидок: ${formatPrice(calculateAveragePrice(products))}`,
+    `Результатов поиска «кот»: ${searchProducts(products, 'кот').length}`,
+  ].join('\n');
 }
 
 // Модалка заявки есть только на главной странице.
