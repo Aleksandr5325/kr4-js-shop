@@ -1,9 +1,9 @@
 const products = [
-  { id: 1, title: 'Бенгальский кот', category: 'animals', price: 2490, discountPercent: 0, rating: 4.7, isAvailable: true },
-  { id: 2, title: 'Шлёпа', category: 'memes', price: 1490, discountPercent: 0, rating: 4.7, isAvailable: true },
-  { id: 3, title: 'Малыш Пудж', category: 'games', price: 2190, discountPercent: 0, rating: 4.7, isAvailable: true },
-  { id: 4, title: 'Шелли', category: 'games', price: 1990, discountPercent: 300 / 1990 * 100, rating: 4.7, isAvailable: true },
-  { id: 5, title: 'Зайчик', category: 'animals', price: 990, discountPercent: 0, rating: 4.7, isAvailable: true },
-  { id: 6, title: 'Ворона', category: 'games', price: 1890, discountPercent: 0, rating: 4.7, isAvailable: true },
-  { id: 7, title: 'Эльза', category: 'cartoons', price: 1890, discountPercent: 300 / 1890 * 100, rating: 4.7, isAvailable: true },
+  { id: 1, title: 'Бенгальский кот', category: 'animals', price: 2490, discountPercent: 0, rating: 4.7, isAvailable: true, image: "bengal-cat", alt: "Мягкая игрушка — бенгальский кот с пятнистым окрасом", categoryLabel: "Животные", description: "Реалистичный пятнистый окрас и устойчивое основание — кот красиво сидит на полке.", href: "product.html", badge: "Хит" },
+  { id: 2, title: 'Шлёпа', category: 'memes', price: 1490, discountPercent: 0, rating: 4.7, isAvailable: true, image: "shlepa", alt: "Мягкая игрушка Шлёпа — каракал с большими ушами", categoryLabel: "Мемы", description: "Тот самый каракал из интернета — мягкий, круглый и очень довольный.", href: "order.html", badge: "Хит" },
+  { id: 3, title: 'Малыш Пудж', category: 'games', price: 2190, discountPercent: 0, rating: 4.7, isAvailable: true, image: "pudge", alt: "Мягкая игрушка Малыш Пудж из Dota 2", categoryLabel: "Игровые персонажи", description: "Плюшевая версия героя Dota 2 — без крюка, зато очень обнимательная.", href: "order.html", badge: "Новинка" },
+  { id: 4, title: 'Шелли', category: 'games', price: 1990, discountPercent: 300 / 1990 * 100, rating: 4.7, isAvailable: true, image: "shelly", alt: "Мягкая игрушка Шелли из Brawl Stars с фиолетовыми волосами", categoryLabel: "Игровые персонажи", description: "Боец из Brawl Stars с фиолетовыми волосами и плюшевым дробовиком.", href: "order.html", badge: "Скидка" },
+  { id: 5, title: 'Зайчик', category: 'animals', price: 990, discountPercent: 0, rating: 4.7, isAvailable: true, image: "bunny", alt: "Белый плюшевый зайчик с бантом", categoryLabel: "Животные", description: "Пушистый зайчик с бантом — идеальный первый друг для малыша.", href: "order.html", badge: "" },
+  { id: 6, title: 'Ворона', category: 'games', price: 1890, discountPercent: 0, rating: 4.7, isAvailable: true, image: "raven", alt: "Мягкая игрушка Ворона из Fortnite в фиолетовом капюшоне", categoryLabel: "Игровые персонажи", description: "Загадочный скин Raven из Fortnite в мягком исполнении.", href: "order.html", badge: "Новинка" },
+  { id: 7, title: 'Эльза', category: 'cartoons', price: 1890, discountPercent: 300 / 1890 * 100, rating: 4.7, isAvailable: true, image: "elsa", alt: "Мягкая кукла Эльза из «Холодного сердца» в голубом платье", categoryLabel: "Мультфильмы", description: "Снежная королева из «Холодного сердца» в платье с прозрачной накидкой.", href: "order.html", badge: "Скидка" },
 ];
