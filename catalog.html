@@ -13,6 +13,7 @@
   <script src="js/ui.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/cart.js" defer></script>
   <script src="js/catalog.js" defer></script>
 </head>
 <body>
@@ -29,6 +30,7 @@
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заказ</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="cart.html">Корзина</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
         </ul>
@@ -83,6 +85,7 @@
       <section class="catalog-products">
         <h2>Список товаров</h2>
 
+        <p id="cart-notice" role="status"></p>
         <p class="catalog-count" role="status"></p>
         <p class="catalog-empty" hidden>Товары не найдены.</p>
         <noscript>Для просмотра каталога включите JavaScript.</noscript>
